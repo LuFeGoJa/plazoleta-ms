@@ -1,0 +1,6 @@
+@echo off
+REM Copia este archivo como local-env.bat, pon tus valores y ejecuta: call local-env.bat
+REM local-env.bat NO se sube a Git (esta en .gitignore).
+set GRADLE_USER_HOME=C:\gradle-home
+set DB_PASSWORD=tu_clave_de_mysql
+set JWT_SECRET=la-misma-clave-de-usuarios-ms

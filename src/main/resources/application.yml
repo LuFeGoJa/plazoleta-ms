@@ -1,0 +1,35 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: plazoleta-ms
+  jackson:
+    deserialization:
+      # el precio del plato debe ser entero: 12.5 se rechaza en vez de truncarse a 12
+      accept-float-as-int: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/plazoleta
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+appDescription: "Microservicio de Plazoleta - restaurantes, platos y pedidos"
+appVersion: "1.0.0"
+
+jwt:
+  # Misma clave en los 4 microservicios (mínimo 32 caracteres). Se lee de la variable de entorno JWT_SECRET.
+  secret: ${JWT_SECRET}
+
+services:
+  usuarios:
+    base-url: http://localhost:8081
+    timeout-seconds: 5
+  mensajeria:
+    base-url: http://localhost:8083
+  trazabilidad:
+    base-url: http://localhost:8084
